@@ -6,11 +6,9 @@ from pkg.lib import create_members_table, search_by_phone, delete_all_records
 def main():
     # 讀取所有帳號密碼
     credentials_list = read_all_credentials("pass.json")
-
     # 輸入帳號密碼
     input_username = input("請輸入帳號：")
     input_password = input("請輸入密碼：")
-
     # 檢查帳密是否正確
     if not any(username == input_username and password == input_password for username, password in credentials_list):
         print("=>帳密錯誤，程式結束\n")
@@ -33,7 +31,6 @@ def main():
             print("=>資料庫已建立\n")
         elif choice == "2":
             # 匯入資料
-            # import_data_from_txt("wanghong.db", "members.txt")
             records_before_deletion = import_data_from_txt("wanghong.db", "members.txt")
             print(f"=> 異動 {records_before_deletion} 筆記錄\n")
         elif choice == "3":
@@ -58,11 +55,9 @@ def main():
             # 查詢指定手機
             search_phone = input("請輸入想查詢記錄的手機: ")
             search_by_phone(db_filename, search_phone)
-
         elif choice == "7":
             # 刪除所有記錄
             records_before_deletion = delete_all_records(db_filename)
-            delete_all_records(db_filename)
             print(f"=> 異動 {records_before_deletion} 筆記錄\n")
         else:
             print("=>無效的選擇\n")

@@ -172,15 +172,15 @@ def display_all_records(db_filename: str) -> None:
 
             if records:
                 print()
-                print(f'{"姓名":<8} {"性別":<4} {"手機"}')
+                print(f'{"姓名":<9} {"性別":<3} {"手機"}')
                 print('-' * 29)
 
                 for record in records:
                     name_width = len(record[1])
                     name_str = f'{record[1].ljust(6 + (6 - name_width))}'
-                    gender_str = f'{record[2]:<6}'
+                    gender_str = f'{record[2]:<5}'
                     phone_str = f'{record[3]}'
-                    print(f'{name_str}{gender_str}{phone_str}')
+                    print(f'{name_str} {gender_str}{phone_str}')
                 print()
             else:
                 print('=> 查無資料\n')
@@ -269,14 +269,14 @@ def search_by_phone(db_filename: str, search_phone: str) -> None:
         records = cursor.fetchall()
 
         if records:
-            print(f'{"姓名":<8} {"性別":<4} {"手機"}')
+            print(f'{"姓名":<9} {"性別":<3} {"手機"}')
             print('--------------------------')
             for record in records:
                 name_width = len(record[1])
                 name_str = f'{record[1].ljust(6 + (6 - name_width))}'
-                gender_str = f'{record[2]:<6}'
+                gender_str = f'{record[2]:<5}'
                 phone_str = f'{record[3]}'
-                print(f'{name_str}{gender_str}{phone_str}\n')
+                print(f'{name_str} {gender_str}{phone_str}\n')
         else:
             print(f'=>查無符合手機號碼 {search_phone} 的記錄\n')
 
